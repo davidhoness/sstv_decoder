@@ -87,10 +87,10 @@ Here's an MP3 test file you can [download]() and play.
     Note that the `Tuned to` value is wrong. This is a display issue and can be ignored. You should now be able to hear audio from the commercial FM station. Move the antenna around or select a different FM radio station with a closer transmitter if the audio is noisy. Press `Ctrl-C` to quit from `rtl_fm`.
 1. Check QSSTV settings are correct.
     - Start > Internet > QSSTV
+    - Options > Configuration > Sound tab
     
     ![image](qsstv_config.png)
     
-    - Options > Configuration > Sound tab
     - Audio Interface = `PulseAudio`
     - Input and Output Audio Device = `default -- Playback/recording through the PulseAudio sound server`
     - Sound Input = `From sound card`
@@ -110,8 +110,13 @@ Here's an MP3 test file you can [download]() and play.
     wget https://raw.githubusercontent.com/davidhoness/sstv_decoder/master/sstv_test.mp3
     ```
     - Select `Receive` tab in QSSTV.
+    
+    ![image](qsstv_receive.png)
+    
+    - Use VIS = `ON`
     - Auto Slant = `ON`
     - Autosave = `ON`
+    - Signals = `Normal`
     - Mode = `Auto`
     - Click play `►` button. Nothing will happen, but just click it to start the receiver.
     - Open `sstv_test.mp3` in Chromium browser. Let it play. Note that with VLC Media Player you get a skewed image sometimes.
