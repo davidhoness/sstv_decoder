@@ -4,9 +4,11 @@
 
 ## What is Slow Scan TV?
 
-SSTV is a picture transmission method to transmit and receive static pictures via radio. Similar to a fax machine, or a 90s dial up modem, SSTV is an analogue signal that resembles a high pitch cacophony of bleeps and screeches. It uses frequency modulation, where the signal frequency shifts up or down to designate pixel brightness and colour. A transmission consists of horizontal lines of pixels, scanned from left to right.
+SSTV is a picture transmission method for transmitting and receiving static pictures via radio. Similar to a fax machine, or a 90s dial up modem, SSTV is an analogue signal that resembles a high pitch cacophony of bleeps and screeches. It uses frequency modulation, where the signal frequency shifts up or down to designate pixel brightness and colour. A transmission consists of horizontal lines of pixels, scanned from left to right.
 
-The International Space Station has a long history of transmitting SSTV signals and these instructions show you how to receive them using just a Raspberry Pi computer and an RTL-SDR USB dongle.
+The International Space Station has a long [history](https://www.spaceflightsoftware.com/ARISS_SSTV/archive.php) of transmitting SSTV signals and these instructions show you how to receive them using just a Raspberry Pi computer and an RTL-SDR USB dongle. 
+
+Why use a Raspberry Pi? This could be done using a desktop PC or Mac however you often need to leave the receiver running overnight, waiting for the ISS to fly over your location, and it's usually easier to tie up a Raspberry Pi with this task than your main utilitarian computer that you use all the time.
 
 ![image](https://www.spaceflightsoftware.com/ARISS_SSTV/uploads/28614.jpg)
 
@@ -17,13 +19,21 @@ To have a quick play, it is possible to install a mobile phone app that decodes 
 - Android: [Robot36](https://play.google.com/store/apps/details?id=xdsopl.robot36)
 - Apple IOS: [CQ SSTV](https://itunes.apple.com/us/app/sstv-slow-scan-tv/id387910013)
 
-Here's an MP3 test file you can [download]() and play.
+Here's an MP3 test file you can [download](https://raw.githubusercontent.com/davidhoness/sstv_decoder/master/sstv_test.mp3) and play.
+
+## What you will need
+
+- Raspberry Pi 2B or later, USB keyboard, mouse and monitor
+- RTL-SDR USB dongle (search for `RTL2832U`, get one that comes with an antenna)
 
 ## Initial setup and test
 
+1. A guide for setting up your Raspberry Pi can be found [here](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up).
+1. We presume you are running Rasbian Stretch Desktop edition available [here](https://www.raspberrypi.org/downloads/)
 1. Install prerequisites.
     - Start > Accessories > Terminal
     ```
+    sudo apt-get update
     sudo apt-get install rtl-sdr sox pulseaudio qsstv
     ```
 1. Insert RTL-SDR dongle with antenna connected.
