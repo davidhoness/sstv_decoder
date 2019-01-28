@@ -63,7 +63,7 @@ Here's an MP3 test file you can [download](https://raw.githubusercontent.com/dav
 1. Verify RTL-SDR can tune to a commercial FM radio station with `rtl_fm` program. The command below pipes raw data from `rtl_fm` into to sox `play` which will then decode the raw data to produce audio output. Modify the value after the `-f` to specify your own FM station/frequency (98.8 is BBC Radio One in the UK).
     - Start > Accessories > Terminal
     ```
-    rtl_fm -f 98.8M -M fm -s 170k -A fast -l 0 -E deemp | play -r 170k -t raw -e s -b 16 -c 1 -V1 -
+    rtl_fm -f 98.8M -M fm -s 170k -A fast -l 0 | play -r 170k -t raw -e s -b 16 -c 1 -V1 -
     ```
     Expected output:
     ```
@@ -179,7 +179,7 @@ Here's an MP3 test file you can [download](https://raw.githubusercontent.com/dav
 1. Start `rtl_fm` in a Terminal window (keep this window open)
     - Start > Accessories > Terminal
     ```
-    rtl_fm -f 145.8M -M fm -s 170k -A fast -l 0 -E deemp | play -r 170k -t raw -e s -b 16 -c 1 -V1 -
+    rtl_fm -f 145.8M -M fm -s 170k -A fast -l 0 | play -r 170k -t raw -e s -b 16 -c 1 -V1 -
     ```
 1. Start `doppler.py` in *another* Terminal window (keep this window open too)
     - Start > Accessories > Terminal
