@@ -199,6 +199,13 @@ Here's an MP3 test file you can [download](https://raw.githubusercontent.com/dav
         - Click `Unspecified` in the top right to set your location
         - On the home page, under *Satellites* click `ISS`
         - Under *Passes to include* click `all`
+1. **OPTIONAL:** Before you leave your ground station overnight. Run these commands to increase the process priority for the main three programs we're using in this setup.
+    - Start > Accessories > Terminal
+    ```
+    sudo renice -1 $(pgrep rtl_fm)
+    sudo renice -1 $(pgrep qsstv)
+    sudo renice -1 $(pgrep doppler)
+    ```
 1. **OPTIONAL:** If you want to, you could manually set the system clock to one minute before an upcoming pass to test what the tuning will be like, although noting will be received of course.
     - Start > Accessories > Terminal
     ```
