@@ -189,7 +189,8 @@ Here's an MP3 test file you can [download](https://raw.githubusercontent.com/dav
 1. Start QSSTV
     - Start > Internet > QSSTV
     - Select `Receive` tab in QSSTV.
-    - Auto Slant = `ON`
+    - Use VIS = `ON`
+    - Auto Slant = `ON`    
     - Autosave = `ON`
     - Mode = `Auto`
     - Click play `►` button.
