@@ -39,7 +39,10 @@ class tle_reader(object):
         print("Loading: %s" % self._tle_file)
 
         try:
-            with urllib.request.urlopen(self._tle_file) as response:
+            ctx = ssl.create_default_context()
+            ctx.check_hostname = False
+            ctx.verify_mode = ssl.CERT_NONE
+            with urllib.request.urlopen(self._tle_file, context=ctx) as response:
                 tle_lines = response.read().decode("utf-8").splitlines()
             index = self.build_index(tle_lines)
             tle_data = index[self._tle_name]
