@@ -170,7 +170,7 @@ This should work in a classroom provided there isn't too much background noise, 
     - Quite often you can get a certificate even if you only manage to decode a few lines of a picture.
     - The usual SSTV frequency is 145.8 MHz.
 1. Try to get your antenna up as high as possible with a good view of the sky in all directions.
-1. If you are using the RLT-SDR kit antenna, please read the getting started [guide](https://www.rtl-sdr.com/using-our-new-dipole-antenna-kit/) for it.
+1. If you are using the RTL-SDR kit antenna, please read the getting started [guide](https://www.rtl-sdr.com/using-our-new-dipole-antenna-kit/) for it.
 1. It's important to adjust the length of the telescopic sections based on this dipole [calculator](http://www.csgnetwork.com/antennaedcalc.html).
     - Under `Desired Frequency` enter `145.8`
     - Under `Select Antenna Calculation` select `One Side`
@@ -186,7 +186,7 @@ This should work in a classroom provided there isn't too much background noise, 
     ```
     rtl_fm -M fm -f 145.8M -s 48k | play -r 48k -t raw -e s -b 16 -c 1 -V1 -
     ```
-    - Note this command is different to the commercial radio station one. A commercial radio stations use wide band FM whereas the ISS transmission uses narrow band FM and so we have to set `rtl_fm` up differently.
+    - Note this command is different to the commercial radio station one. A commercial radio station uses wide band FM whereas the ISS transmission uses narrow band FM and so we have to set `rtl_fm` up differently.
 1. **OPTIONAL:** If you are doing Doppler correction start `doppler.py` in *another* Terminal window (keep this window open too).
 1. Start QSSTV
     - Start > Internet > QSSTV
