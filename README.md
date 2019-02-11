@@ -1,10 +1,8 @@
-# A Doppler corrected SSTV decoder setup for Raspbian
-
-**Disclaimer: This is an experimental set of instructions and is NOT an official product. The purpose is to validate that the instructions work correctly and allow users to receive pictures from the ISS.**
+# An SSTV decoder setup for Raspbian
 
 ## What is Slow Scan TV?
 
-SSTV is a picture transmission method for transmitting and receiving static pictures via radio. Similar to a fax machine, or a 90s dial up modem, SSTV is an analogue signal that resembles a high pitch cacophony of bleeps and screeches. It uses frequency modulation, where the signal frequency shifts up or down to designate pixel brightness and colour. A transmission consists of horizontal lines of pixels, scanned from left to right.
+SSTV is a picture transmission method for transmitting and receiving static pictures via radio. Similar to a fax machine, or a 90s dial up modem, SSTV is an analogue signal that resembles a high pitch cacophony of bleeps and screeches. It uses frequency modulation, where the signal frequency shifts up or down to designate pixel brightness and colour. A transmission consists of horizontal lines of pixels, scanned from left to right, encoded as audio. The audio is transmitted using radio and converted back into the picture at the other end using special software.
 
 The International Space Station has a long [history](https://www.spaceflightsoftware.com/ARISS_SSTV/archive.php) of transmitting SSTV signals and these instructions show you how to receive them using just a Raspberry Pi computer and an RTL-SDR USB dongle. 
 
@@ -14,17 +12,23 @@ Why use a Raspberry Pi? This could be done using a desktop PC or Mac however you
 
 ## Playing with SSTV on a mobile phone
 
-To have a quick play, it is possible to install a mobile phone app that decodes SSTV through microphone input. Playing an SSTV test recording through the speakers of a computer with the phone placed near the speaker is usually good enough.
+To have a quick play, it is possible to install a mobile phone app that decodes SSTV through its microphone input. Playing the bleeps and screeches of an SSTV signal with the phone placed near the speaker is usually good enough.
 
 - Android: [Robot36](https://play.google.com/store/apps/details?id=xdsopl.robot36)
 - Apple IOS: [CQ SSTV](https://itunes.apple.com/us/app/sstv-slow-scan-tv/id387910013)
 
 Here's an MP3 test file you can [download](https://raw.githubusercontent.com/davidhoness/sstv_decoder/master/sstv_test.mp3) and play.
 
+This should work in a classroom provided there isn't too much background noise, if you ask everyone to install the app and then play the test recording at a reasonable volume all the phones will decode the picture. It will give everyone a good idea of how long it takes to obtain one image. Make sure you sneeze or cough half way through to show how this causes interference.
+
+# Main instructions
+
 ## What you will need
 
-- Raspberry Pi 2B or later, USB keyboard, mouse and monitor
-- RTL-SDR USB dongle (search for `RTL2832U`, get one that comes with an antenna)
+- Raspberry Pi 2B or later, with the usual peripherals
+- RTL-SDR USB dongle (search RTL2832U)
+  - Don't buy the little 30 cm mag-mount antennas. You will have little or no hope of picking up the ISS with them.
+  - [This starter kit](https://www.amazon.com/RTL-SDR-Blog-RTL2832U-Software-Telescopic/dp/B011HVUEME/) is recommended and comes with a good beginners antenna that will pick up the ISS.
 
 ## Initial setup and test
 
@@ -34,9 +38,16 @@ Here's an MP3 test file you can [download](https://raw.githubusercontent.com/dav
     - Start > Accessories > Terminal
     ```
     sudo apt-get update
-    sudo apt-get install rtl-sdr sox pulseaudio qsstv
+    sudo apt-get install rtl-sdr sox pulseaudio qsstv ntpdate
     ```
-1. Insert RTL-SDR dongle with antenna connected.
+1. Set the correct time.
+    - Start > Preferences > Raspberry Pi Configuration > Localisation tab > Set Timezone
+    - Change Area and Location accordingly > OK
+    - Start > Accessories > Terminal
+    ```
+    sudo ntpdate pool.ntp.org
+    ```
+1. Insert RTL-SDR dongle and connect/deploy the antenna.
 1. Verify RTL-SDR is working with `rtl_test` program.
     - Start > Accessories > Terminal
     ```
@@ -63,7 +74,7 @@ Here's an MP3 test file you can [download](https://raw.githubusercontent.com/dav
 1. Verify RTL-SDR can tune to a commercial FM radio station with `rtl_fm` program. The command below pipes raw data from `rtl_fm` into to sox `play` which will then decode the raw data to produce audio output. Modify the value after the `-f` to specify your own FM station/frequency (98.8 is BBC Radio One in the UK).
     - Start > Accessories > Terminal
     ```
-    rtl_fm -f 98.8M -M fm -s 170k -A fast -l 0 | play -r 170k -t raw -e s -b 16 -c 1 -V1 -
+    rtl_fm -M wbfm -f 98.8M | play -r 32k -t raw -e s -b 16 -c 1 -V1 -
     ```
     Expected output:
     ```
@@ -74,27 +85,27 @@ Here's an MP3 test file you can [download](https://raw.githubusercontent.com/dav
 
     -: (raw)
 
-      Encoding: Signed PCM
-      Channels: 1 @ 16-bit
-    Samplerate: 170000Hz
-    Replaygain: off
-      Duration: unknown
+      Encoding: Signed PCM    
+      Channels: 1 @ 16-bit   
+    Samplerate: 32000Hz      
+    Replaygain: off         
+      Duration: unknown      
 
     Found MAKE MODEL tuner
     Tuner gain set to automatic.
-    Tuned to 99055000 Hz.
+    Tuned to 99071000 Hz.
     oversampling input by: 6x.
     Oversampling output by: 1x.
     Buffer size: 8.03ms
     Exact sample rate is: 1020000.026345 Hz
     Create UDP thread
     Created UDP thread
-    Main socket started! :-) Tuning enabled on UDP/6020
+    Main socket started! :-) Tuning enabled on UDP/6020 
     Sampling at 1020000 S/s.
     Output at 170000 Hz.
-    In:0.00% 00:00:02.60 [00:00:00.00] Out:XXXk  [ -====|====- ]        Clip:0
+    In:0.00% 00:00:02.60 [00:00:00.00] Out:XXXk  [ -====|====- ]        Clip:0    
     ```
-    Note that the `Tuned to` value is wrong. This is a display issue and can be ignored. You should now be able to hear audio from the commercial FM station. Move the antenna around or select a different FM radio station with a closer transmitter if the audio is noisy. Press `Ctrl-C` to quit from `rtl_fm`.
+    Note that the `Tuned to` value is doesn't match. This is due to [DC spike](https://www.rtl-sdr.com/tag/dc-spike/) and can be ignored. You should now be able to hear audio from the commercial FM station. Move the antenna around or select a different FM radio station with a closer transmitter if the audio is noisy. Press `Ctrl-C` to quit from `rtl_fm`.
 1. Check QSSTV settings are correct.
     - Start > Internet > QSSTV
     - Options > Configuration > Sound tab
