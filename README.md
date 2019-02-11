@@ -28,7 +28,7 @@ This should work in a classroom provided there isn't too much background noise, 
 - Raspberry Pi 2B or later, with the usual peripherals.
 - RTL-SDR USB dongle (search RTL2832U).
   - Don't buy the little 30 cm mag-mount antennas. You will have little or no hope of picking up the ISS with them.
-  - [This starter kit](https://www.amazon.com/RTL-SDR-Blog-RTL2832U-Software-Telescopic/dp/B011HVUEME/) is recommended and comes with a good beginners antenna that will pick up the ISS.
+  - [This RTL-SDR starter kit](https://www.amazon.com/RTL-SDR-Blog-RTL2832U-Software-Telescopic/dp/B011HVUEME/) is recommended and comes with a good beginners dipole antenna that will pick up the ISS.
 
 ## Initial setup and test
 
@@ -164,11 +164,19 @@ This should work in a classroom provided there isn't too much background noise, 
 
 ## Receive SSTV from the ISS
 
-1. **Note that the ISS is not always transmitting the SSTV signal**. You can find out when it is here: http://ariss-sstv.blogspot.com/
+1. **Note that the ISS is not always transmitting the SSTV signal**.
+1. You can find out when it is here: http://ariss-sstv.blogspot.com/
     - There is often an SSTV event in April for the birthday of Yuri Gagarin.
     - Quite often you can get a certificate even if you only manage to decode a few lines of a picture.
     - The usual SSTV frequency is 145.8 MHz.
-1. Set the correct time. QSSTV saves the images with a UTC time filename and this is useful later when working out which ISS passes they are from.
+1. Try to get your antenna up as high as possible with a good view of the sky in all directions.
+1. If you are using the RLT-SDR kit antenna, please read the getting started [guide](https://www.rtl-sdr.com/using-our-new-dipole-antenna-kit/) for it.
+1. It's important to adjust the length of the telescopic sections based on this dipole [calculator](http://www.csgnetwork.com/antennaedcalc.html).
+    - Under `Desired Frequency` enter `145.8`
+    - Under `Select Antenna Calculation` select `One Side`
+    - Click `Calculate`
+    - Remember that there is about 2 cm of metal in each side of the antenna itself. So take the calculated value and make both sides this length minus 2 cm (excluding the screw threads).
+1. Set the correct time on the Raspberry Pi. QSSTV saves the images with a UTC time filename and this is useful later when working out which ISS passes they are from.
     - Start > Accessories > Terminal
     ```
     sudo ntpdate pool.ntp.org
