@@ -5,6 +5,7 @@ import socket
 import ephem
 import time
 import sys
+import ssl
 
 
 C = 300000000.0
