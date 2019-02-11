@@ -83,7 +83,7 @@ class rtl_fm_remote(object):
         self.send_cmd(2, squelch)
 
     def set_gain(self, gain):
-        self.send_cmd(3, -100 if gain == "auto" else gain)
+        self.send_cmd(3, gain)
 
     def send_cmd(self, cmd, param):
         cmd_bytes = (cmd).to_bytes(1, "little")
