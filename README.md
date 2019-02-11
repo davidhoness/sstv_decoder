@@ -25,8 +25,8 @@ This should work in a classroom provided there isn't too much background noise, 
 
 ## What you will need
 
-- Raspberry Pi 2B or later, with the usual peripherals
-- RTL-SDR USB dongle (search RTL2832U)
+- Raspberry Pi 2B or later, with the usual peripherals.
+- RTL-SDR USB dongle (search RTL2832U).
   - Don't buy the little 30 cm mag-mount antennas. You will have little or no hope of picking up the ISS with them.
   - [This starter kit](https://www.amazon.com/RTL-SDR-Blog-RTL2832U-Software-Telescopic/dp/B011HVUEME/) is recommended and comes with a good beginners antenna that will pick up the ISS.
 
@@ -147,56 +147,39 @@ This should work in a classroom provided there isn't too much background noise, 
     - Observe the decoding in QSSTV. Notice the FFT and waterflall display activity on the right of the screen.    
     - Other SSTV test recordings can be found online such as: https://soundcloud.com/spacecomms/pd120-sstv-test-recording
 
-## Prepare to receive SSTV from the ISS
-
-1. Note that the ISS is not always transmitting the SSTV signal. You can find out when it is here: http://ariss-sstv.blogspot.com/
-    - There is often a week-long SSTV event in April for the birthday of Yuri Gagarin.
-    - The usual SSTV frequency is 145.8 MHz.
-1. Note regarding doppler shift: https://en.wikipedia.org/wiki/Doppler_effect
-    - A common example of Doppler shift is the change of pitch heard when a police car or ambulance passes you. Compared to the emitted frequency of the siren, the frequency you hear is higher during the approach, identical at the instant of passing by, and lower during departure. The same thing happens with radio waves as with sound waves.
-    - The ISS is moving at ~27,600 km/h. This motion causes doppler shift in the radio waves received at your location.
+## Note regarding Doppler shift
+1. What is it? A common example of [Doppler shift](https://en.wikipedia.org/wiki/Doppler_effect) is the change of pitch heard when a police car or ambulance passes you. Compared to the emitted frequency of the siren, the frequency you hear is higher during the approach, identical at the instant of passing by, and lower during departure. The same thing happens with radio waves as with sound waves.
+    - The ISS is moving at ~27,600 km/h. This motion causes Doppler shift in the radio waves received at your location.
     - To compensate for the effects of Doppler shift, ground stations must continually re-tune their receiver as the ISS approaches, passes overhead and flies away.
     - As the ISS comes over the horizon (AOS or Acquisition of Signal) you would need to tune approx 3.5 kHz ABOVE 145.8 MHz.
     - At the instant when the ISS is directly overhead the actual transmitting frequency of 145.8 MHz can be used.
     - Just before ISS goes down over the horizon (LOS or Loss of Signal) you would need to tune approx 3.5 kHz BELOW 145.8 MHz.
     - The amount of re-tuning is dependent on the elevation of the ISS above the horizon. For example, an overhead pass requires a lot of re-tuning because there's a huge change in distance and relative speed as the ISS passes by. A low elevation pass, where it just peeks above the horizon and goes down again, requires relatively little.
-    - **IMPORTANT:** No Doppler shift compensation is performed on the ISS. All compensation must all be handled by individual ground stations.
+    - No Doppler shift compensation is performed on the ISS. All compensation must all be handled by individual ground stations.
     - More information: https://www.qsl.net/ah6rh/am-radio/spacecomm/doppler-and-the-iss.html
-1. Download a pre-made python script to compensate for doppler shift. This program tracks the ISS using `ephem`, computes the doppler corrected frequency for when the ISS is passing over and re-tunes `rtl_fm` via a UDP socket. With QSSTV running in the background you should be able to receive pictures from the ISS.
+    - Luckily **QSSTV can deal with Doppler shift itself** and so you don't have to do anything to compensate after tuning to 145.8 MHz.
+1. If you want to do Doppler correction anyway it won't do any harm. It could, in fact, be a nice coding activity for a classroom.
+1. [Here](https://github.com/davidhoness/sstv_decoder/blob/master/doppler.py) is a pre-made python script to compensate for Doppler shift. This program tracks the ISS using `ephem`, computes the Doppler corrected frequency for when the ISS is passing over and re-tunes `rtl_fm` via a UDP socket.
+1. You will need to modify this python script to set your location. You can easily look up the latitude and longitude of your location using [Google Maps geocoder](https://google-developers.appspot.com/maps/documentation/utils/geocoder/). Usually the postal code and country is sufficient.
+
+## Receive SSTV from the ISS
+
+1. **Note that the ISS is not always transmitting the SSTV signal**. You can find out when it is here: http://ariss-sstv.blogspot.com/
+    - There is often an SSTV event in April for the birthday of Yuri Gagarin.
+    - Quite often you can get a certificate even if you only manage to decode a few lines of a picture.
+    - The usual SSTV frequency is 145.8 MHz.
+1. Set the correct time. QSSTV saves the images with a UTC time filename and this is useful later when working out which ISS passes they are from.
     - Start > Accessories > Terminal
     ```
-    wget https://raw.githubusercontent.com/davidhoness/sstv_decoder/master/doppler.py
-    chmod +x doppler.py
+    sudo ntpdate pool.ntp.org
     ```
-1. Modify the python script to set your location. Current location is set to ESTEC in the Netherlands.
-    - First look up the latitude and longitude of your location using [Google Maps geocoder](https://google-developers.appspot.com/maps/documentation/utils/geocoder/). Usually the postal code and country is sufficient.
-    - Open the file `doppler.py` for editing
-    ```
-    nano doppler.py
-    ```
-    - Edit the capitalised variables to specify your location, the altitude can be an approximation.    
-    ```python
-    LATITUDE = "52.219308"
-    LONGITUDE = "4.419926"
-    ALTITUDE = 20
-    ```
-    - Please also feel free to review the rest of the code at this time.
-        - Note, writing this code could form a nice classroom activity however for this test the code is provided ready to go.
-    - Save the changes by pressing `Ctrl-O`, followed by `Enter` and then `Ctrl-X` to quit.
-
-## Final setup
-
-1. Ensure the Raspberry Pi is online via Ethernet or WiFi. This is needed so `doppler.py` can get the ISS telemetry data and keep it updated.
 1. Start `rtl_fm` in a Terminal window (keep this window open)
     - Start > Accessories > Terminal
     ```
-    rtl_fm -f 145.8M -M fm -s 170k -A fast -l 0 | play -r 170k -t raw -e s -b 16 -c 1 -V1 -
+    rtl_fm -M fm -f 145.8M -s 48k | play -r 48k -t raw -e s -b 16 -c 1 -V1 -
     ```
-1. Start `doppler.py` in *another* Terminal window (keep this window open too)
-    - Start > Accessories > Terminal
-    ```
-    ./doppler.py
-    ```
+    - Note this command is different to the commercial radio station one. A commercial radio stations use wide band FM whereas the ISS transmission uses narrow band FM and so we have to set `rtl_fm` up differently.
+1. **OPTIONAL:** If you are doing Doppler correction start `doppler.py` in *another* Terminal window (keep this window open too).
 1. Start QSSTV
     - Start > Internet > QSSTV
     - Select `Receive` tab in QSSTV.
@@ -206,23 +189,25 @@ This should work in a classroom provided there isn't too much background noise, 
     - Mode = `Auto`
     - Click play `►` button.
     - FFT and waterflall display on the right should show noise coming from `rtl_fm`
+1. You can look up when the ISS will next pass your location on: https://www.heavens-above.com/
+    - Click `Unspecified` in the top right to set your location
+    - Type a postal code and country into *Enter place to search for* and click `Search`
+    - Scroll down and click `Update`
+    - You'll now be back on the home page, under *Satellites* click `ISS`
+    - Under *Passes to include* click `all`
+    - Clicking on any row in the table shows the sky chart for that pass
+    - Imagine holding that picture above your head and aligning it with the compass directions        
+    - It can also be useful to look at the `Ground track`, see link in top right
 1. Wait for the ISS to arrive. You may want to leave your ground station overnight or over the weekend to capture several passes.
-    - You can look up when the ISS will next pass your location on: https://www.heavens-above.com/
-        - Click `Unspecified` in the top right to set your location
-        - On the home page, under *Satellites* click `ISS`
-        - Under *Passes to include* click `all`
-1. **OPTIONAL:** Before you leave your ground station overnight. Run these commands to increase the process priority for the main four programs we're using in this setup.
-    - Start > Accessories > Terminal
-    ```
-    sudo renice -1 $(pgrep rtl_fm)
-    sudo renice -1 $(pgrep play)
-    sudo renice -1 $(pgrep qsstv)
-    sudo renice -1 $(pgrep doppler)
-    ```
-1. **OPTIONAL:** If you want to, you could manually set the system clock to one minute before an upcoming pass to test what the tuning will be like, although noting will be received of course.
+1. **OPTIONAL:** If you are doing Doppler correction, you could manually set the system clock to one minute before an upcoming pass to test what the tuning will be like, although noting will be received of course.
     - Start > Accessories > Terminal
     ```
     sudo date -s "YYYY-MM-DD HH:MM:SS"
     ```
-    - Ensure you return the system clock to the correct time before leaving the ground station running.
-    - When you return to your ground station select the `Gallery` tab in QSSTV to see what images were received.
+    - Ensure you return the system clock to the correct time before leaving the ground station running.    
+    ```
+    sudo ntpdate pool.ntp.org
+    ```
+1. When you return to your ground station select the `Gallery` tab in QSSTV to see what images were received.
+1. Go [here](https://www.spaceflightsoftware.com/ARISS_SSTV/index.php) to upload your SSTV images for recognition.
+    - The pictures can be found in `/home/pi/qsstv/rx_sstv`
