@@ -195,6 +195,7 @@ This should work in a classroom provided there isn't too much background noise, 
     - Auto Slant = `ON`    
     - Autosave = `ON`
     - Mode = `Auto`
+    - Save if Complete (%) = `10`
     - Click play `►` button.
     - FFT and waterflall display on the right should show noise coming from `rtl_fm`
 1. You can look up when the ISS will next pass your location on: https://www.heavens-above.com/
