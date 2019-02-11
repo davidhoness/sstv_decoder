@@ -114,7 +114,7 @@ try:
         iss.tle.compute(myloc)
         alt = math.degrees(iss.tle.alt)
 
-        if alt > 6:  # iss is flying over our location
+        if alt > 0:  # iss is flying over our location
             new_freq = int(F0 - iss.tle.range_velocity * F0 / C)  # doppler
             if new_freq != freq:
                 print(new_freq, round(alt, 2), myloc.date)
