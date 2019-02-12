@@ -28,12 +28,12 @@ This should work in a classroom provided there isn't too much background noise, 
 - Raspberry Pi 2B or later, with the usual peripherals.
 - RTL-SDR USB dongle (search RTL2832U).
   - Don't buy the little 30 cm mag-mount antennas. You will have little or no hope of picking up the ISS with them.
-  - [This RTL-SDR starter kit](https://www.amazon.com/RTL-SDR-Blog-RTL2832U-Software-Telescopic/dp/B011HVUEME/) is recommended and comes with a good beginners dipole antenna that will pick up the ISS.
+  - [This RTL-SDR starter kit](https://www.amazon.com/RTL-SDR-Blog-RTL2832U-Software-Telescopic/dp/B011HVUEME/) is good and comes with a nice beginners dipole antenna that will pick up the ISS.
 
 ## Initial setup and test
 
 1. A guide for setting up your Raspberry Pi can be found [here](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up).
-1. We presume you are running Rasbian Stretch Desktop edition available [here](https://www.raspberrypi.org/downloads/)
+1. We presume you are running Rasbian Stretch Desktop edition available [here](https://www.raspberrypi.org/downloads/).
 1. Install prerequisites.
     - Start > Accessories > Terminal
     ```
@@ -140,7 +140,8 @@ This should work in a classroom provided there isn't too much background noise, 
     - Signals = `Normal`
     - Mode = `Auto`
     - Click play `►` button. Nothing will happen, but just click it to start the receiver.
-    - Open `sstv_test.mp3` in Chromium browser. Let it play. Note that with VLC Media Player you get a skewed image sometimes.
+    - Open `sstv_test.mp3` in the Chromium browser. You can either drag and drop the file from File Manager or just enter `file:///home/pi/sstv_test.mp3` into the address bar.
+    - Let it play. Note that with VLC Media Player you get a skewed image sometimes.
     
     ![image](qsstv_decode.png) 
     
@@ -171,11 +172,11 @@ This should work in a classroom provided there isn't too much background noise, 
     - The usual SSTV frequency is 145.8 MHz.
 1. Try to get your antenna up as high as possible with a good view of the sky in all directions.
 1. If you are using the RTL-SDR kit antenna, please read the getting started [guide](https://www.rtl-sdr.com/using-our-new-dipole-antenna-kit/) for it.
-1. It's important to adjust the length of the telescopic sections based on this dipole [calculator](http://www.csgnetwork.com/antennaedcalc.html).
+1. It's a good idea to adjust the length of the telescopic sections based on this dipole [calculator](http://www.csgnetwork.com/antennaedcalc.html) to match the antenna's resonant frequency to 145.8 MHz. This will help pick up weaker signals from low elevation passes.
     - Under `Desired Frequency` enter `145.8`
     - Under `Select Antenna Calculation` select `One Side`
     - Click `Calculate`
-    - Remember that there is about 2 cm of metal in each side of the antenna itself. So take the calculated value and make both sides this length minus 2 cm (excluding the screw threads).
+    - Remember there is about 2 cm of metal in each side of the antenna base. So take the calculated value and, before screwing the telescopic sections in, make them both this length minus 2 cm (excluding the screw threads).
 1. Set the correct time on the Raspberry Pi. QSSTV saves the images with a UTC time filename and this is useful later when working out which ISS passes they are from.
     - Start > Accessories > Terminal
     ```
