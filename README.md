@@ -188,6 +188,7 @@ This should work in a classroom provided there isn't too much background noise, 
     - You'll now be back on the home page, under *Satellites* click `ISS`
     - Under *Passes to include* click `all`
     - Clicking on any row in the table shows the sky chart for that pass
+    - The *Alt.* value under *Highest point* is the maximum elevation of the pass, 90 would be directly overhead.
     - Imagine holding that picture above your head and aligning it with the compass directions        
     - It can also be useful to look at the `Ground track`, see link in top right
 1. Set the correct time on the Raspberry Pi. QSSTV saves the images with a UTC time filename and this is useful later when working out which ISS passes they are from.
