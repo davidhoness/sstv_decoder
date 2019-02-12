@@ -170,13 +170,26 @@ This should work in a classroom provided there isn't too much background noise, 
     - There is often an SSTV event in April for the birthday of Yuri Gagarin.
     - Quite often you can get a certificate even if you only manage to decode a few lines of a picture.
     - The usual SSTV frequency is 145.8 MHz.
-1. Try to get your antenna up as high as possible with a good view of the sky in all directions.
 1. If you are using the RTL-SDR kit antenna, please read the getting started [guide](https://www.rtl-sdr.com/using-our-new-dipole-antenna-kit/) for it.
 1. It's a good idea to adjust the length of the telescopic sections based on this dipole [calculator](http://www.csgnetwork.com/antennaedcalc.html) to match the antenna's resonant frequency to 145.8 MHz. This will help pick up weaker signals from low elevation passes.
     - Under `Desired Frequency` enter `145.8`
     - Under `Select Antenna Calculation` select `One Side`
     - Click `Calculate`
     - Remember there is about 2 cm of metal in each side of the antenna base. So take the calculated value and, before screwing the telescopic sections in, make them both this length minus 2 cm (excluding the screw threads).
+1. Try to get your antenna up as high as possible with a good view of the sky in all directions.
+1. To start with, deploy the dipole in a vertical v-shape and orient it with the flight path of the ISS.
+    - A better way of saying this is, with the dipole flat, align it with the flight path of the ISS and then bend the two arms into a v-shape.
+    - Antennas and their performance are sometimes a bit of an art form as opposed to an exact science.
+    - Experiment with different configurations, try one arm horizontal and one arm vertical for instance.
+1. You can look up when the ISS will next pass your location and see its flight path on: https://www.heavens-above.com/
+    - Click `Unspecified` in the top right to set your location
+    - Type a postal code and country into *Enter place to search for* and click `Search`
+    - Scroll down and click `Update`
+    - You'll now be back on the home page, under *Satellites* click `ISS`
+    - Under *Passes to include* click `all`
+    - Clicking on any row in the table shows the sky chart for that pass
+    - Imagine holding that picture above your head and aligning it with the compass directions        
+    - It can also be useful to look at the `Ground track`, see link in top right
 1. Set the correct time on the Raspberry Pi. QSSTV saves the images with a UTC time filename and this is useful later when working out which ISS passes they are from.
     - Start > Accessories > Terminal
     ```
@@ -199,15 +212,7 @@ This should work in a classroom provided there isn't too much background noise, 
     - Save if Complete (%) = `10`
     - Click play `►` button.
     - FFT and waterflall display on the right should show noise coming from `rtl_fm`
-1. You can look up when the ISS will next pass your location on: https://www.heavens-above.com/
-    - Click `Unspecified` in the top right to set your location
-    - Type a postal code and country into *Enter place to search for* and click `Search`
-    - Scroll down and click `Update`
-    - You'll now be back on the home page, under *Satellites* click `ISS`
-    - Under *Passes to include* click `all`
-    - Clicking on any row in the table shows the sky chart for that pass
-    - Imagine holding that picture above your head and aligning it with the compass directions        
-    - It can also be useful to look at the `Ground track`, see link in top right
+
 1. Wait for the ISS to arrive. You may want to leave your ground station overnight or over the weekend to capture several passes.
 1. **OPTIONAL:** If you are doing Doppler correction, you could manually set the system clock to one minute before an upcoming pass to test what the tuning will be like, although noting will be received of course.
     - Start > Accessories > Terminal
