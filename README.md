@@ -183,7 +183,7 @@ This should work in a classroom provided there isn't too much background noise, 
     - Experiment with different configurations, try one arm horizontal and one arm vertical for instance.
 1. You can look up when the ISS will next pass your location and see its flight path on: https://www.heavens-above.com/
     - Click `Unspecified` in the top right to set your location
-    - Type a postal code and country into *Enter place to search for* and click `Search`
+    - Type **your** postal code and country into *Enter place to search for* and click `Search`
     - Scroll down and click `Update`
     - You'll now be back on the home page, under *Satellites* click `ISS`
     - Under *Passes to include* click `all`
