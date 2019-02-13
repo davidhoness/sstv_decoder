@@ -193,11 +193,11 @@ This should work in a classroom provided there isn't too much background noise, 
         - It can also be useful to look at the `Ground track` (see link in top right).
 1. Plan ahead and set up your ground station with time to spare before the ISS flies over.
 1. If you are using the RTL-SDR kit antenna, please read the getting started [guide](https://www.rtl-sdr.com/using-our-new-dipole-antenna-kit/) for it.
-    - It's a good idea to adjust the length of the telescopic sections based on this dipole [calculator](http://www.csgnetwork.com/antennaedcalc.html) to match the antenna's resonant frequency to 145.8 MHz. This will help pick up weaker signals from low elevation passes.
+    - It's a good idea to adjust the length of the telescopic arms based on this dipole [calculator](http://www.csgnetwork.com/antennaedcalc.html) to match the antenna's resonant frequency to 145.8 MHz. This will help pick up weaker signals from low elevation passes.
         - Under `Desired Frequency` enter `145.8`
         - Under `Select Antenna Calculation` select `One Side`
         - Click `Calculate`
-        - Remember there is about 2 cm of metal in each side of the antenna base. So take the calculated value and, before screwing in the telescopic sections, make them both this length minus 2 cm (excluding the screw threads).
+        - Remember there is about 2 cm of metal in each side of the antenna base. So take the calculated value and, before screwing in the arms, make them both this length minus 2 cm (excluding the screw threads). It doesn't have to be perfect but make it as close as possible.
     - To start with, deploy the dipole in a vertical v-shape and orient it with the flight path of the ISS that you find on https://www.heavens-above.com/
         - Perhaps a better way of saying this is, with the dipole flat, align it with the flight path of the ISS and then bend the two arms upwards into a right-angle v-shape.
     - Antennas and their performance are sometimes a bit of an art form as opposed to an exact science.
