@@ -1,6 +1,6 @@
 # An SSTV decoder setup for Raspbian
 
-Have you ever wanted to recive a radio signal from space? It's actually a lot easier than you might think, and fun!
+Have you ever wanted to receive a radio signal from space? It's actually a lot easier than you might think, and fun!
 
 ## What is Slow Scan TV?
 
@@ -151,7 +151,7 @@ This should work in a classroom provided there isn't too much background noise, 
     
     ![image](qsstv_decode.png) 
     
-    - Observe the decoding in QSSTV. Notice the FFT and waterflall display activity on the right of the screen.    
+    - Observe the decoding in QSSTV. Notice the FFT and waterfall display activity on the right of the screen.    
     - Other SSTV test recordings can be found online such as: https://soundcloud.com/spacecomms/pd120-sstv-test-recording
 
 ## Note regarding Doppler shift
@@ -175,7 +175,7 @@ This should work in a classroom provided there isn't too much background noise, 
     - When the ISS will be transmitting the SSTV signal. **It's not always on**.        
     - What frequency the SSTV signal will be transmitted on (usually 145.8 MHz).
     - When the ISS will fly over your location.
-        - The ISS flies over most places a few times every day (unless you live in the Arctic/Antarctic)
+        - The ISS flies over most places a few times every day (unless you live in the Arctic/Antarctic).
 1. You can find out when the ISS is transmitting here: http://ariss-sstv.blogspot.com/
     - There is often an SSTV event in April for the birthday of Yuri Gagarin.
     - They usually last for a few days at a time meaning you will get multiple ISS passes during which you can receive the SSTV signal.
@@ -191,7 +191,7 @@ This should work in a classroom provided there isn't too much background noise, 
         - Imagine holding that picture above your head and aligning it with the compass directions.
         - The line shows the flight path of the ISS and this is useful for roughly positioning your antenna.
         - It can also be useful to look at the `Ground track` (see link in top right).
-1. Plan ahead and set up your gound station with time to spare before the ISS flies over.
+1. Plan ahead and set up your ground station with time to spare before the ISS flies over.
 1. If you are using the RTL-SDR kit antenna, please read the getting started [guide](https://www.rtl-sdr.com/using-our-new-dipole-antenna-kit/) for it.
     - It's a good idea to adjust the length of the telescopic sections based on this dipole [calculator](http://www.csgnetwork.com/antennaedcalc.html) to match the antenna's resonant frequency to 145.8 MHz. This will help pick up weaker signals from low elevation passes.
         - Under `Desired Frequency` enter `145.8`
@@ -224,10 +224,9 @@ This should work in a classroom provided there isn't too much background noise, 
     - Mode = `Auto`
     - Save if Complete (%) = `10`
     - Click play `►` button.
-    - FFT and waterflall display on the right should show noise coming from `rtl_fm`
-
+    - FFT and waterfall display on the right should show noise coming from `rtl_fm`
 1. Wait for the ISS to arrive. You may want to leave your ground station overnight or over the weekend to capture several passes.
-1. **OPTIONAL:** If you are doing Doppler correction, you could manually set the system clock to one minute before an upcoming pass to test what the tuning will be like, although noting will be received of course.
+1. **OPTIONAL:** If you are doing Doppler correction, you could manually set the system clock to one minute before an upcoming pass to test what the tuning will be like, although nothing will be received of course.
     - Start > Accessories > Terminal
     ```
     sudo date -s "YYYY-MM-DD HH:MM:SS"
@@ -239,5 +238,5 @@ This should work in a classroom provided there isn't too much background noise, 
 1. When you return to your ground station select the `Gallery` tab in QSSTV to see what images were received.
 1. Go [here](https://www.spaceflightsoftware.com/ARISS_SSTV/index.php) to upload your SSTV images for recognition.
     - The pictures can be found in `/home/pi/qsstv/rx_sstv`
-1. You can potentially get a certificate like this even if you only decode a few lines of one picture. Check the information on http://ariss-sstv.blogspot.com/ to find out how to apply for it. A great incentive for kids.
+1. You can potentially get a certificate like this even if you only decode a few lines of one picture. Check the information on http://ariss-sstv.blogspot.com/ to find out how to apply for it. A great incentive for kids!
     ![image](Diplome.png)
