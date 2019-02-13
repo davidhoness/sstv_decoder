@@ -1,10 +1,16 @@
 # An SSTV decoder setup for Raspbian
 
+Have you ever wanted to recive a radio signal from space? It's actually a lot easier than you might think, and fun!
+
 ## What is Slow Scan TV?
 
-SSTV is a picture transmission method for transmitting and receiving static pictures via radio. Similar to a fax machine, or a 90s dial up modem, SSTV is an analogue signal that resembles a high pitch cacophony of bleeps and screeches. It uses frequency modulation, where the signal frequency shifts up or down to designate pixel brightness and colour. A transmission consists of horizontal lines of pixels, scanned from left to right, encoded as audio. The audio is transmitted using radio and converted back into the picture at the other end using special software.
+- Short answer
+    - You convert a picture into sound, transmit the sound via radio, and convert the received sound back into a picture on the other end.
 
-The International Space Station has a long [history](https://www.spaceflightsoftware.com/ARISS_SSTV/archive.php) of transmitting SSTV signals and these instructions show you how to receive them using just a Raspberry Pi computer and an RTL-SDR USB dongle. 
+- Long answer
+    - SSTV is a picture transmission method for transmitting and receiving static pictures via radio. Similar to a fax machine, or a 90s dial up modem, SSTV is an analogue audio signal that sounds like a high pitch racket of bleeps and screeches. It uses frequency modulation, where the frequency of a tone shifts up or down to designate pixel brightness and colour. A transmission consists of horizontal lines of pixels, scanned from left to right, encoded as audio. The audio is transmitted using radio and converted back into the picture at the other end using special software.
+
+The International Space Station has a long [history](https://www.spaceflightsoftware.com/ARISS_SSTV/archive.php) of transmitting SSTV signals and these instructions show you how to receive them using just a Raspberry Pi computer and an RTL-SDR USB dongle.
 
 Why use a Raspberry Pi? This could be done using a desktop PC or Mac however you often need to leave the receiver running overnight, waiting for the ISS to fly over your location, and it's usually easier to tie up a Raspberry Pi with this task than your main utilitarian computer that you use all the time.
 
@@ -227,3 +233,5 @@ This should work in a classroom provided there isn't too much background noise, 
 1. When you return to your ground station select the `Gallery` tab in QSSTV to see what images were received.
 1. Go [here](https://www.spaceflightsoftware.com/ARISS_SSTV/index.php) to upload your SSTV images for recognition.
     - The pictures can be found in `/home/pi/qsstv/rx_sstv`
+1. You can potentially get a certificate like this even if you only decode a few lines of one picture. Check the information on http://ariss-sstv.blogspot.com/ to find out how to apply for it. A great inventive for kids.
+    ![image](Diplome.png)
