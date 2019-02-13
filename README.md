@@ -14,7 +14,7 @@ The International Space Station has a long [history](https://www.spaceflightsoft
 
 Why use a Raspberry Pi? This could be done using a desktop PC or Mac however you often need to leave the receiver running overnight, waiting for the ISS to fly over your location, and it's usually easier to tie up a Raspberry Pi with this task than your main utilitarian computer that you use all the time.
 
-![image](https://www.spaceflightsoftware.com/ARISS_SSTV/uploads/28614.jpg)
+![image](https://www.spaceflightsoftware.com/ARISS_SSTV/uploads/40309.jpg)
 
 ## Playing with SSTV on a mobile phone
 
