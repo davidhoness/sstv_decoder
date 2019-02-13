@@ -10,7 +10,7 @@ Have you ever wanted to recive a radio signal from space? It's actually a lot ea
 - Long answer
     - SSTV is a picture transmission method for transmitting and receiving static pictures via radio. Similar to a fax machine, or a 90s dial up modem, SSTV is an analogue audio signal that sounds like a high pitch racket of bleeps and screeches. It uses frequency modulation, where the frequency of a tone shifts up or down to designate pixel brightness and colour. A transmission consists of horizontal lines of pixels, scanned from left to right, encoded as audio. The audio is transmitted using radio and converted back into the picture at the other end using special software.
 
-The International Space Station has a long [history](https://www.spaceflightsoftware.com/ARISS_SSTV/archive.php) of transmitting SSTV signals and these instructions show you how to receive them using just a Raspberry Pi computer and an RTL-SDR USB dongle.
+The International Space Station has a long [history](https://www.spaceflightsoftware.com/ARISS_SSTV/archive.php) of transmitting SSTV signals and these instructions show you how to set up a ground station and receive them using just a Raspberry Pi computer and an RTL-SDR USB dongle.
 
 Why use a Raspberry Pi? This could be done using a desktop PC or Mac however you often need to leave the receiver running overnight, waiting for the ISS to fly over your location, and it's usually easier to tie up a Raspberry Pi with this task than your main utilitarian computer that you use all the time.
 
@@ -171,32 +171,38 @@ This should work in a classroom provided there isn't too much background noise, 
 
 ## Receive SSTV from the ISS
 
-1. **Note that the ISS is not always transmitting the SSTV signal**.
-1. You can find out when it is here: http://ariss-sstv.blogspot.com/
+1. To do this you need to know three things:
+    - When the ISS will be transmitting the SSTV signal. **It's not always on**.        
+    - What frequency the SSTV signal will be transmitted on (usually 145.8 MHz).
+    - When the ISS will fly over your location.
+        - The ISS flies over most places a few times every day (unless you live in the Arctic/Antarctic)
+1. You can find out when the ISS is transmitting here: http://ariss-sstv.blogspot.com/
     - There is often an SSTV event in April for the birthday of Yuri Gagarin.
-    - Quite often you can get a certificate even if you only manage to decode a few lines of a picture.
-    - The usual SSTV frequency is 145.8 MHz.
+    - They usually last for a few days at a time meaning you will get multiple ISS passes during which you can receive the SSTV signal.
+1. You can look up when the ISS will next pass your location on: https://www.heavens-above.com/
+    - Click `Unspecified` in the top right to set your location.
+    - Type **your** postal code and country into *Enter place to search for* and click `Search`.
+    - Scroll down and click `Update`.
+    - You'll now be back on the home page, under *Satellites* click `ISS`.
+    - Under *Passes to include* click `all`.
+        - The *Alt* value under *Highest point* is the maximum elevation of the pass above the horizon, 90 would be directly overhead.
+        - Passes with higher maximum elevation will give better results than lower ones.
+    - Clicking on any row in the table shows the **sky chart** for that pass.
+        - Imagine holding that picture above your head and aligning it with the compass directions.
+        - The line shows the flight path of the ISS and this is useful for roughly positioning your antenna.
+        - It can also be useful to look at the `Ground track` (see link in top right).
+1. Plan ahead and set up your gound station with time to spare before the ISS flies over.
 1. If you are using the RTL-SDR kit antenna, please read the getting started [guide](https://www.rtl-sdr.com/using-our-new-dipole-antenna-kit/) for it.
-1. It's a good idea to adjust the length of the telescopic sections based on this dipole [calculator](http://www.csgnetwork.com/antennaedcalc.html) to match the antenna's resonant frequency to 145.8 MHz. This will help pick up weaker signals from low elevation passes.
-    - Under `Desired Frequency` enter `145.8`
-    - Under `Select Antenna Calculation` select `One Side`
-    - Click `Calculate`
-    - Remember there is about 2 cm of metal in each side of the antenna base. So take the calculated value and, before screwing the telescopic sections in, make them both this length minus 2 cm (excluding the screw threads).
-1. Try to get your antenna up as high as possible with a good view of the sky in all directions.
-1. To start with, deploy the dipole in a vertical v-shape and orient it with the flight path of the ISS.
-    - A better way of saying this is, with the dipole flat, align it with the flight path of the ISS and then bend the two arms into a v-shape.
+    - It's a good idea to adjust the length of the telescopic sections based on this dipole [calculator](http://www.csgnetwork.com/antennaedcalc.html) to match the antenna's resonant frequency to 145.8 MHz. This will help pick up weaker signals from low elevation passes.
+        - Under `Desired Frequency` enter `145.8`
+        - Under `Select Antenna Calculation` select `One Side`
+        - Click `Calculate`
+        - Remember there is about 2 cm of metal in each side of the antenna base. So take the calculated value and, before screwing in the telescopic sections, make them both this length minus 2 cm (excluding the screw threads).
+    - To start with, deploy the dipole in a vertical v-shape and orient it with the flight path of the ISS that you find on https://www.heavens-above.com/
+        - Perhaps a better way of saying this is, with the dipole flat, align it with the flight path of the ISS and then bend the two arms upwards into a right-angle v-shape.
     - Antennas and their performance are sometimes a bit of an art form as opposed to an exact science.
-    - Experiment with different configurations, try one arm horizontal and one arm vertical for instance.
-1. You can look up when the ISS will next pass your location and see its flight path on: https://www.heavens-above.com/
-    - Click `Unspecified` in the top right to set your location
-    - Type **your** postal code and country into *Enter place to search for* and click `Search`
-    - Scroll down and click `Update`
-    - You'll now be back on the home page, under *Satellites* click `ISS`
-    - Under *Passes to include* click `all`
-    - Clicking on any row in the table shows the sky chart for that pass
-    - The *Alt.* value under *Highest point* is the maximum elevation of the pass, 90 would be directly overhead.
-    - Imagine holding that picture above your head and aligning it with the compass directions        
-    - It can also be useful to look at the `Ground track`, see link in top right
+    - Experiment with different configurations on different ISS passes. Try one arm horizontal and one arm vertical for instance.
+1. Try to get your antenna up as high as possible with a good view of the sky in all directions.
 1. Set the correct time on the Raspberry Pi. QSSTV saves the images with a UTC time filename and this is useful later when working out which ISS passes they are from.
     - Start > Accessories > Terminal
     ```
@@ -233,5 +239,5 @@ This should work in a classroom provided there isn't too much background noise, 
 1. When you return to your ground station select the `Gallery` tab in QSSTV to see what images were received.
 1. Go [here](https://www.spaceflightsoftware.com/ARISS_SSTV/index.php) to upload your SSTV images for recognition.
     - The pictures can be found in `/home/pi/qsstv/rx_sstv`
-1. You can potentially get a certificate like this even if you only decode a few lines of one picture. Check the information on http://ariss-sstv.blogspot.com/ to find out how to apply for it. A great inventive for kids.
+1. You can potentially get a certificate like this even if you only decode a few lines of one picture. Check the information on http://ariss-sstv.blogspot.com/ to find out how to apply for it. A great incentive for kids.
     ![image](Diplome.png)
