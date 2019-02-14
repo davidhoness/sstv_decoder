@@ -12,7 +12,7 @@ Have you ever wanted to receive a radio signal from space? It's fun and actually
 
 ## SPAAAACE
 
-The International Space Station has a long [history](https://www.spaceflightsoftware.com/ARISS_SSTV/archive.php) of transmitting SSTV pictures for **global events**, each lasting several days, where people the world over tune their radios to the ISS and try to receive the pictures every time it flies over their home.
+The International Space Station has a long [history](https://www.spaceflightsoftware.com/ARISS_SSTV/archive.php) of transmitting SSTV pictures for [global events](http://ariss-sstv.blogspot.com/), each lasting several days, where people the world over tune their radios to the ISS and try to receive the pictures every time it flies over their home.
 
 These are great fun to participate in and often there’s some healthy competition between people to see who can receive the pictures with the most clarity. You can monitor how well everyone else is doing by looking in the [#sstv](https://twitter.com/search?q=%23sstv) hashtags on social media.
 
@@ -20,7 +20,7 @@ A good reception | A reception with noise/interference
 --- | ---
 ![image](https://www.spaceflightsoftware.com/ARISS_SSTV/uploads/40309.jpg)|![image](https://www.spaceflightsoftware.com/ARISS_SSTV/uploads/40509.png)
 
-These instructions show you how to set up a ground station and receive them using just a Raspberry Pi computer and an RTL-SDR USB dongle. Why use a Raspberry Pi? This could be done using a desktop PC or Mac however you often need to leave the receiver running overnight, waiting for the ISS to fly over your location, and it's usually easier to tie up a Raspberry Pi with this task than your main utilitarian computer that you use all the time.
+These instructions show you how to set up a ground station and receive SSTV pictures using just a Raspberry Pi computer and an RTL-SDR USB dongle. Why use a Raspberry Pi? This could be done using a desktop PC or Mac however you often need to leave the receiver running overnight, waiting for the ISS to fly over your location, and it's usually easier to tie up a Raspberry Pi with this task than your main utilitarian computer that you use all the time.
 
 ## Playing with SSTV on a mobile phone
 
