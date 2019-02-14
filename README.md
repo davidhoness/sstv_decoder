@@ -16,9 +16,10 @@ The International Space Station has a long [history](https://www.spaceflightsoft
 
 These are great fun to participate in and often there’s some healthy competition between people to see who can receive the pictures with the most clarity. You can monitor how well everyone else is doing by looking in the [#sstv](https://twitter.com/search?q=%23sstv) hashtags on social media.
 
-A good reception | A reception with noise/interference
+A good/perfect reception | A reception with noise/interference
 --- | ---
 ![image](https://www.spaceflightsoftware.com/ARISS_SSTV/uploads/40309.jpg)|![image](https://www.spaceflightsoftware.com/ARISS_SSTV/uploads/40509.png)
+If you get one this good you're doing *really* well. | It looks like the ISS went below the horizon towards the end of this one.
 
 These instructions show you how to set up a ground station and receive SSTV pictures using just a Raspberry Pi computer and an RTL-SDR USB dongle. Why use a Raspberry Pi? This could be done using a desktop PC or Mac however you often need to leave the receiver running overnight, waiting for the ISS to fly over your location, and it's usually easier to tie up a Raspberry Pi with this task than your main utilitarian computer that you use all the time.
 
