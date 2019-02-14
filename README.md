@@ -1,6 +1,6 @@
 # An SSTV decoder setup for Raspbian
 
-Have you ever wanted to receive a radio signal from space? It's actually a lot easier than you might think, and fun!
+Have you ever wanted to receive a radio signal from space? It's fun and actually a lot easier than you might think!
 
 ## What is Slow Scan TV?
 
@@ -10,11 +10,17 @@ Have you ever wanted to receive a radio signal from space? It's actually a lot e
 - Long answer
     - SSTV is a picture transmission method for transmitting and receiving static pictures via radio. Similar to a fax machine, or a 90s dial up modem, SSTV is an analogue audio signal that sounds like a high pitch racket of bleeps and screeches. It uses frequency modulation, where the frequency of a tone shifts up or down to designate pixel brightness and colour. A transmission consists of horizontal lines of pixels, scanned from left to right, encoded as audio. The audio is transmitted using radio and converted back into the picture at the other end using special software.
 
-The International Space Station has a long [history](https://www.spaceflightsoftware.com/ARISS_SSTV/archive.php) of transmitting SSTV signals and these instructions show you how to set up a ground station and receive them using just a Raspberry Pi computer and an RTL-SDR USB dongle.
+## SPAAAACE
 
-Why use a Raspberry Pi? This could be done using a desktop PC or Mac however you often need to leave the receiver running overnight, waiting for the ISS to fly over your location, and it's usually easier to tie up a Raspberry Pi with this task than your main utilitarian computer that you use all the time.
+The International Space Station has a long [history](https://www.spaceflightsoftware.com/ARISS_SSTV/archive.php) of transmitting SSTV pictures for **global events**, each lasting several days, where people the world over tune their radios to the ISS and try to receive the pictures every time it flies over their home.
 
-![image](https://www.spaceflightsoftware.com/ARISS_SSTV/uploads/40309.jpg)
+These are great fun to participate in and often there’s some healthy competition between people to see who can receive the pictures with the most clarity. You can monitor how well everyone else is doing by looking in the [#sstv](https://twitter.com/search?q=%23sstv) hashtags on social media.
+
+A good reception | A reception with noise/interference
+--- | ---
+![image](https://www.spaceflightsoftware.com/ARISS_SSTV/uploads/40309.jpg)|![image](https://www.spaceflightsoftware.com/ARISS_SSTV/uploads/40509.png)
+
+These instructions show you how to set up a ground station and receive them using just a Raspberry Pi computer and an RTL-SDR USB dongle. Why use a Raspberry Pi? This could be done using a desktop PC or Mac however you often need to leave the receiver running overnight, waiting for the ISS to fly over your location, and it's usually easier to tie up a Raspberry Pi with this task than your main utilitarian computer that you use all the time.
 
 ## Playing with SSTV on a mobile phone
 
