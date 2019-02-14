@@ -14,6 +14,8 @@ Have you ever wanted to receive a radio signal from space? It's fun and actually
 
 The International Space Station has a long [history](https://www.spaceflightsoftware.com/ARISS_SSTV/archive.php) of transmitting SSTV pictures for [global events](http://ariss-sstv.blogspot.com/), each lasting several days, where people the world over tune their radios to the ISS and try to receive the pictures every time it flies over their home.
 
+Typically a picture is transmitted continuously for about two minutes with two minutes of silence before the next picture starts. The ISS usually takes about 10 minutes to fly from horizon to horizon when it passes over your home and so, each time, you can usually get several images.
+
 These are great fun to participate in and often there’s some healthy competition between people to see who can receive the pictures with the most clarity. You can monitor how well everyone else is doing by looking in the [#sstv](https://twitter.com/search?q=%23sstv) hashtags on social media.
 
 A good/perfect reception | A reception with noise/interference
