@@ -48,7 +48,12 @@ This should work in a classroom provided there isn't too much background noise, 
 ## Initial setup and test
 
 1. A guide for setting up your Raspberry Pi can be found [here](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up).
-1. We presume you are running Rasbian Stretch Desktop edition available [here](https://www.raspberrypi.org/downloads/).
+1. We presume you are running Rasbian Stretch Desktop edition available [here](https://www.raspberrypi.org/downloads/) and are online.
+1. Switch the audio output to the headphone jack. This is needed for the way pulse audio loops back the system audio as an input device.
+    - Start > Accessories > Terminal;
+    ```
+    sudo amixer cset numid=3 1
+    ```
 1. Install prerequisites.
     - Start > Accessories > Terminal
     ```
