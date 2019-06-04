@@ -87,7 +87,7 @@ while running:
     alt = math.degrees(iss.tle.alt)
     
     if alt > 0:  # iss is flying over our location
-        fn = datetime.datetime.now().strftime(FILE_FMT)
+        fn = datetime.datetime.utcnow().strftime(FILE_FMT)
         f = open(fn, "wb")
         proc = subprocess.Popen(rtl_cmd, stdout=f)
         while alt > 0:
